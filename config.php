@@ -12,7 +12,7 @@ require_once "vendor/autoload.php";
  * @throws \Doctrine\DBAL\DBALException
  * @throws \Doctrine\ORM\ORMException
  */
-function GetEntityManager()
+function GetEntityManager(): EntityManager
 {
     $config = Setup::createConfiguration(true, __DIR__ . '/var/cache', new ArrayCache());
     $driver = new AnnotationDriver(new AnnotationReader(), [__DIR__ . '/entity']);

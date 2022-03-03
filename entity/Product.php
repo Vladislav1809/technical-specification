@@ -1,14 +1,23 @@
 <?php
  // entity/Product.php
+use Doctrine\DBAL\Tools\Console\ConsoleRunner;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Mapping as ORM;
+
+
 /**
- * @Entity @Table(name="products")
+ * @ORM\Entity()
+ * @ORM\Table(name="Product")
 **/
 class Product
 {
-    /** @Id @Column(type="integer") @GeneratedValue **/
+    /** @ORM\Id();
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue
+     */
     protected $id;
 
-    /** @Column(type="string") **/
+    /** @ORM\Column(type="string") **/
     protected $name;
 
     public function getId()
@@ -26,4 +35,6 @@ class Product
         $this->name = $name;
     }
 }
-
+// добавить данные в таблицу
+// controller/
+// api.php
