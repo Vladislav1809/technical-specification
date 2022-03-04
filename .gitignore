@@ -2,5 +2,5 @@ var/
 vendor/
 .idea/
 .sencha/
-.build/
-.ext/
+build/
+ext/
