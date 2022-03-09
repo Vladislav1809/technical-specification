@@ -15,7 +15,8 @@ Ext.define('task_schedule.view.main.Main', {
 
         'task_schedule.view.main.MainController',
         'task_schedule.view.main.MainModel',
-        'task_schedule.view.main.List'
+        'task_schedule.view.main.Task.Task',
+        'task_schedule.view.main.User.User'
     ],
 
     controller: 'main',
@@ -28,6 +29,7 @@ Ext.define('task_schedule.view.main.Main', {
     tabRotation: 0,
 
     header: {
+        style: 'background-color: #800080',
         layout: {
             align: 'stretchmax'
         },
@@ -41,6 +43,7 @@ Ext.define('task_schedule.view.main.Main', {
     },
 
     tabBar: {
+        style: 'background-color: #800080',
         flex: 1,
         layout: {
             align: 'stretch',
@@ -49,6 +52,7 @@ Ext.define('task_schedule.view.main.Main', {
     },
 
     responsiveConfig: {
+        style: 'background-color: #800080',
         tall: {
             headerPosition: 'top'
         },
@@ -60,6 +64,7 @@ Ext.define('task_schedule.view.main.Main', {
     defaults: {
         bodyPadding: 20,
         tabConfig: {
+            style: 'background-color: #800080',
             plugins: 'responsive',
             responsiveConfig: {
                 wide: {
@@ -76,29 +81,16 @@ Ext.define('task_schedule.view.main.Main', {
     },
 
     items: [{
-        title: 'Home',
-        iconCls: 'fa-home',
-        // The following grid shares a store with the classic version's grid as well!
+        title: 'Task',
+        glyph: '?',
         items: [{
-            xtype: 'mainlist'
+            xtype: 'task'
         }]
     }, {
         title: 'Users',
         iconCls: 'fa-user',
-        bind: {
-            html: '{loremIpsum}'
-        }
-    }, {
-        title: 'Groups',
-        iconCls: 'fa-users',
-        bind: {
-            html: '{loremIpsum}'
-        }
-    }, {
-        title: 'Settings',
-        iconCls: 'fa-cog',
-        bind: {
-            html: '{loremIpsum}'
-        }
+        items: [{
+            xtype: 'user_task'
+        }]
     }]
 });

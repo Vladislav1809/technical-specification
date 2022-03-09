@@ -12,5 +12,5 @@ Ext.define('task_schedule.view.main.MainModel', {
         loremIpsum: 'This is not update surface!'
     }
 
-    //TODO - add data, formulas and/or methods to support your view
+    // TODO - add data, formulas and/or methods to support your view
 });
