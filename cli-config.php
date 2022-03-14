@@ -1,6 +1,7 @@
 <?php
+use Doctrine\ORM\Tools\Console\ConsoleRunner;
 
 // cli-config.php
-require_once "config.php";
-
-return \Doctrine\ORM\Tools\Console\ConsoleRunner::createHelperSet($entityManager);
+require_once 'config.php';
+$entityManager = GetEntityManager();
+return ConsoleRunner::createHelperSet($entityManager);

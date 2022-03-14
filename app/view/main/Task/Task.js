@@ -1,10 +1,12 @@
 Ext.define('task_schedule.view.main.Task.Task', {
     extend: 'Ext.panel.Panel',
     xtype: 'task',
-
+    requires: [
+        'task_schedule.view.main.Task.TaskContoller'
+    ],
     layout: 'vbox',
-    width: 1200,
-
+    width: '100%',
+    controller: 'task',
     items: [
         {
             style: 'background-color: #800080',
@@ -12,10 +14,9 @@ Ext.define('task_schedule.view.main.Task.Task', {
             xtype: 'button',
             text: 'Create',
             scale: 'large',
-            handler: function () {
-                Ext.create('task_schedule.view.main.TaskWindow.TaskWindow').show();
-            }
-        },
+            handler: 'ClickCreate'
+
+    },
         {
             xtype: 'taskgrid'
         }

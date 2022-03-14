@@ -90,7 +90,7 @@ Ext.define('task_schedule.view.main.Main', {
         title: 'Users',
         iconCls: 'fa-user',
         items: [{
-            xtype: 'user_task'
+            xtype: 'user'
         }]
     }]
 });

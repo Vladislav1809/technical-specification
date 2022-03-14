@@ -3,13 +3,15 @@ Ext.define('task_schedule.view.main.Task.TaskWindow.TaskWindowController', {
 
     alias: 'controller.taskWindow',
 
-    onItemSelected: function (sender, record) {
-        Ext.Msg.confirm('Confirm', 'Are you sure?', 'onConfirm', this);
+    ClickClose: function (button) {
+        button.up("task_window").close()
     },
 
-    onConfirm: function (choice) {
-        if (choice === 'yes') {
-            //
-        }
-    }
+    // ClickCreate: function (button){
+    //
+    //     button.up("task_window").close()
+    //
+    // }
+
+
 });

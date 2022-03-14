@@ -1,4 +1,5 @@
 <?php
+
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Cache\ArrayCache;
 use Doctrine\ORM\EntityManager;
@@ -12,16 +13,16 @@ require_once "vendor/autoload.php";
  * @throws \Doctrine\DBAL\DBALException
  * @throws \Doctrine\ORM\ORMException
  */
-function GetEntityManager(): EntityManager
+function GetEntityManager()
 {
     $config = Setup::createConfiguration(true, __DIR__ . '/var/cache', new ArrayCache());
     $driver = new AnnotationDriver(new AnnotationReader(), [__DIR__ . '/entity']);
-    $dbParams = array(
-        'driver' => 'pdo_pgsql',
-        'user' => 'vladislav',
-        'password' => '7879031318',
-        'dbname' => 'test',
-    );
+    $isDevMode = true;
+    $proxyDir = null;
+    $cache = null;
+    $useSimpleAnnotationReader = false;
+    $paths = array(__DIR__ . '/entities');
+    $config = \Doctrine\ORM\Tools\Setup::createAnnotationMetadataConfiguration($paths, $isDevMode, $proxyDir, $cache, $useSimpleAnnotationReader);
     $connectionParams = array(
         'dbname' => 'test',
         'user' => 'vladislav',
@@ -38,10 +39,10 @@ function GetEntityManager(): EntityManager
 
 $entityManager = GetEntityManager();
 
-$sql = "SELECT * FROM customers";
-
-$result = $entityManager->getConnection()->executeQuery($sql)->fetchAll(PDO::FETCH_ASSOC);
-
-var_dump(
-    $result
-);
+//$sql = "SELECT * FROM tasks";
+//
+//$result = $entityManager->getConnection()->executeQuery($sql)->fetchAll(PDO::FETCH_ASSOC);
+//
+//var_dump(
+//    $result
+//);
