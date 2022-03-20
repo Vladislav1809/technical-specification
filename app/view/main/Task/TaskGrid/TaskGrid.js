@@ -1,7 +1,7 @@
 Ext.define('task_schedule.view.main.Task.TaskGrid.TaskGrid', {
     extend: 'Ext.grid.Panel',
     xtype: 'taskgrid',
-
+    itemId: 'taskGrid',
     layout: 'vbox',
     width: '100%',
     store: {
@@ -10,7 +10,7 @@ Ext.define('task_schedule.view.main.Task.TaskGrid.TaskGrid', {
     requers: [
         'task_schedule.view.main.Task.TaskWindow.TaskWindowController',
     ],
-    controller: "taskgrid",
+    controller: "taskGrid",
 
     columns: [
         {
@@ -25,11 +25,26 @@ Ext.define('task_schedule.view.main.Task.TaskGrid.TaskGrid', {
         {
             text: 'Users',
             dataIndex: 'users',
-            flex: 1
+            flex: 1,
+            renderer: function (value)
+            {
+                let users = ''
+                if (typeof(value) !== 'undefined'){
+                    for (let i = 0; i < value.length; i++){
+                        let element = value[i]
+                        if (i !== value.length - 1){
+                            users += element.name + ', '
+                        }else{
+                            users += element.name
+                        }
+                    }
+                }
+                return users
+            }
         },
         {
             text: 'Date of create',
-            dataIndex: 'date',
+            dataIndex: 'dateOfCreate',
             flex: 1
         },
         {
@@ -45,12 +60,10 @@ Ext.define('task_schedule.view.main.Task.TaskGrid.TaskGrid', {
                 xtype: 'button',
                 text: "Delete",
                 defaultBindProperty: null, //important
-                handler: function(widgetColumn) {
-                    alert("Got data!");
-                },
-                listeners: {
-                    //some function to delete row
-                }
+                handler: 'clickDelete',
+                // listeners: {
+                //     delete: 'delete'
+                // }
             }
         }
     ],
@@ -58,8 +71,11 @@ Ext.define('task_schedule.view.main.Task.TaskGrid.TaskGrid', {
     //     select: 'onItemGridSelected'
     // }
     listeners : {
-        celldblclick: 'onItemGridSelected'
-    },
+        celldblclick: 'onItemGridSelected',
+        beforerender: function(item) {
+            item.getStore().load()
+        }
+    }
 
 
 });

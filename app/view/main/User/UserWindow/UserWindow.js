@@ -1,7 +1,7 @@
 Ext.define('task_schedule.view.main.UserWindow.UserWindow', {
     extend: 'Ext.window.Window',
-
     xtype: 'user_window',
+    itemId: 'userWindow',
     // title: 'Create users',
     bind:
         {
@@ -21,26 +21,25 @@ Ext.define('task_schedule.view.main.UserWindow.UserWindow', {
     ],
     controller: 'userWindow',
     viewModel: 'userWindow',
-    // defaults: {
-    //     xtype: 'textfield',
-    //     labelAlign: 'top',
-    //     padding: 5
-    // },
     items: [
         {
             xtype: 'textfield',
+            itemId: 'userName',
             fieldLabel: 'User',
             name: 'users',
             width: '400',
             bind: {
-                value: '{UserWindow.users}'
+                value: '{UserWindow.name}'
             }
         },
         {
             xtype: 'combobox',
-            fieldLabel: 'tasks',
+            itemId: 'userTasks',
+            fieldLabel: 'Tasks',
             name: 'Tasks',
             width: '400',
+            // valueField: 'id',
+            // displayField: 'name',
             bind: {
                 value: '{UserWindow.tasks}'
             }
@@ -50,7 +49,6 @@ Ext.define('task_schedule.view.main.UserWindow.UserWindow', {
     buttons: [
         {
             style: 'background-color: #800080',
-            // text: 'Create',
             scale: 'large',
             handler: 'ClickCreate',
             bind: {

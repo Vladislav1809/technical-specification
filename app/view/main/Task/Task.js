@@ -2,7 +2,7 @@ Ext.define('task_schedule.view.main.Task.Task', {
     extend: 'Ext.panel.Panel',
     xtype: 'task',
     requires: [
-        'task_schedule.view.main.Task.TaskContoller'
+        'task_schedule.view.main.Task.TaskController'
     ],
     layout: 'vbox',
     width: '100%',

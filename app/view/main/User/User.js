@@ -4,23 +4,31 @@ Ext.define('task_schedule.view.main.User.User', {
     requires: [
         'task_schedule.view.main.User.UserContoller'
     ],
-    layout: 'vbox',
-    width: '100%',
+
+    layout: {
+        type: 'vbox',
+    },
     controller: 'user',
+
     items: [
         {
-            style: 'background-color: #800080',
-            border: 0,
-            xtype: 'button',
-            text: 'Create',
-            scale: 'large',
-            handler: 'ClickCreate'
-
-    },
+            xtype: 'panel',
+            margin: '0 0 5 0',
+            items: [
+                {
+                    style: 'background-color: #800080',
+                    border: 0,
+                    xtype: 'button',
+                    text: 'Create',
+                    scale: 'large',
+                    handler: 'ClickCreate'
+                },
+            ]
+        },
         {
-            xtype: 'usergrid'
+            xtype: 'usergrid',
+            width: '100%'
         }
     ]
-
 });
 

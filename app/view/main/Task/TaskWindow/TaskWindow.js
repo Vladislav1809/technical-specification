@@ -2,6 +2,7 @@ Ext.define('task_schedule.view.main.TaskWindow.TaskWindow', {
     extend: 'Ext.window.Window',
 
     xtype: 'task_window',
+    itemId: 'taskWindow',
     // title: 'Create tasks',
     bind:
         {
@@ -21,15 +22,12 @@ Ext.define('task_schedule.view.main.TaskWindow.TaskWindow', {
     ],
     controller: 'taskWindow',
     viewModel: 'taskWindow',
-    // defaults: {
-    //     xtype: 'textfield',
-    //     labelAlign: 'top',
-    //     padding: 5
-    // },
+
     items: [
         {
             xtype: 'textfield',
             fieldLabel: 'Name',
+            itemId: 'taskName',
             name: 'name',
             bind: {
                 value: '{TaskWindow.name}'
@@ -47,11 +45,12 @@ Ext.define('task_schedule.view.main.TaskWindow.TaskWindow', {
         {
             xtype: 'datefield',
             fieldLabel: 'Date of create',
-            name: 'date',
+            name: 'dateOfCreate',
             format: 'd.m.Y',
+            itemId: 'dateOfCreate',
             width: '400',
             bind: {
-                value: '{TaskWindow.date}'
+                value: '{TaskWindow.dateOfCreate}'
             }
         },
         {
@@ -59,6 +58,7 @@ Ext.define('task_schedule.view.main.TaskWindow.TaskWindow', {
             fieldLabel: 'Deadline',
             name: 'deadline',
             format: 'd.m.Y',
+            itemId: 'deadline',
             width: '400',
             bind: {
                 value: '{TaskWindow.deadline}'

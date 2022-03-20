@@ -5,8 +5,9 @@ Ext.define('task_schedule.view.User.UserGrid.UserGridContoller', {
 
     onItemGridSelected:  function (item) {
 
-        debugger;
+
         let rowRecords = item.getSelectionModel().getSelection()[0];
+        // debugger
         Ext.create('task_schedule.view.main.UserWindow.UserWindow', {
             viewModel: {
                 data: {
@@ -15,12 +16,18 @@ Ext.define('task_schedule.view.User.UserGrid.UserGridContoller', {
                 }
             }
         }).show();
+    },
+
+    clickDelete: function () {
+        {
+            Ext.create('task_schedule.view.main.UserWindow.UserDeleteWindow', {
+                viewModel: {
+                    data: {
+                        action: "Create"
+                    }
+                }
+            }).show();
+        }
     }
-
-    // onConfirm: function (choice) {
-    //     if (choice === 'yes') {
-
-        // }
-    // },
 
 });

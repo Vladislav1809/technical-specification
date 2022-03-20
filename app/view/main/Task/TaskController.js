@@ -1,4 +1,4 @@
-Ext.define('task_schedule.view.main.Task.TaskContoller', {
+Ext.define('task_schedule.view.main.Task.TaskController', {
     extend: 'Ext.app.ViewController',
 
     alias: 'controller.task',

@@ -5,20 +5,13 @@ Ext.define('task_schedule.store.WindowStore', {
     fields:[ 'id', 'name', 'users','date','deadline'],
 
     alias: 'store.WindowStore',
-
-    data: {
-        items: [
-            {id: '1', name: 'Home Work', users: 'user', date: '11.03.2022', deadline: '20.03.2022'},
-            {id: '2', name: 'Home Work1', users: 'user1', date: '11.03.2022', deadline: '20.03.2022'},
-
-        ],
-    },
     proxy: {
-        type: 'memory',
+        method: 'GET',
+        type: 'ajax',
+        url: 'http://localhost:63342/technical-specification/api.php?act=Task&method=getTasks',
         reader: {
             type: 'json',
-            rootProperty: 'items'
         }
     },
-
+    autoLoad: true
 });

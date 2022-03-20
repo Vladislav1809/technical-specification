@@ -39,7 +39,7 @@ function GetEntityManager()
 
 $entityManager = GetEntityManager();
 
-//$sql = "SELECT * FROM tasks";
+//$sql = "SELECT * FROM client";
 //
 //$result = $entityManager->getConnection()->executeQuery($sql)->fetchAll(PDO::FETCH_ASSOC);
 //

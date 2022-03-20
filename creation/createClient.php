@@ -1,17 +1,19 @@
 <?php
 
-use entity\Customer;
+use entity\Client;
 
 require_once(__DIR__ . '/../config.php');
-require_once(__DIR__ . '/../entity/Customer.php');
+require_once(__DIR__ . '/../entity/Client.php');
 
 //create a first customer
 $entityManager = GetEntityManager();
-$Customer = new Customer('customer','Customer@customer.ru');
-$entityManager->persist($Customer);
+$Client = new Client();
+//$User->setId(1);
+$Client->setClient('test');
+$entityManager->persist($Client);
 $entityManager->flush();
 
-echo "Created customer with id " . $Customer->getId() . PHP_EOL;
+//echo "Created customer with id " . $Customer->getId() . PHP_EOL;
 
 // List of all customers:
 

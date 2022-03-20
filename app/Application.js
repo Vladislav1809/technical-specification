@@ -16,7 +16,7 @@ Ext.define('task_schedule.Application', {
     },
 
     stores: [
-        // TODO: add global / shared stores here
+        'task_schedule.store.UserStore'
     ],
 
     launch: function () {

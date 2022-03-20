@@ -8,7 +8,11 @@ Ext.define('task_schedule.view.main.User.UserContoller', {
         Ext.create('task_schedule.view.main.UserWindow.UserWindow', {
             viewModel: {
                 data: {
-                    action: "Create"
+                    action: "Create",
+                    UserWindow: {
+                        users: null,
+                        tasks: null
+                    }
                 }
             }
         }).show();
