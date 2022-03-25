@@ -34,14 +34,18 @@ Ext.define('task_schedule.view.main.UserWindow.UserWindow', {
         },
         {
             xtype: 'combobox',
-            itemId: 'userTasks',
+            multiSelect: true,
+            itemId: 'userCombobox',
             fieldLabel: 'Tasks',
             name: 'Tasks',
             width: '400',
-            // valueField: 'id',
-            // displayField: 'name',
+            store: Ext.create('task_schedule.store.WindowStore'),
+            valueField: 'id',
+            displayField: 'name',
+            queryMode: 'local',
+
             bind: {
-                value: '{UserWindow.tasks}'
+                value: '{UserWindow.taskIds}'
             }
         }
     ],
@@ -55,7 +59,7 @@ Ext.define('task_schedule.view.main.UserWindow.UserWindow', {
                 text: "{action}"
             }
 
-},
+        },
         {
             style: 'background-color: #800080',
             text: 'Close',

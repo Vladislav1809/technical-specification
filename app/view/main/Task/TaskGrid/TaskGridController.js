@@ -1,11 +1,17 @@
-Ext.define('task_schedule.view.Task.TaskGrid.TaskGridController', {
+Ext.define('task_schedule.view.main.Task.TaskGrid.TaskGridController', {
     extend: 'Ext.app.ViewController',
-
     alias: 'controller.taskGrid',
 
-    onItemGridSelected:  function (item) {
-
+    onItemGridSelected: function (item) {
         let rowRecords = item.getSelectionModel().getSelection()[0];
+
+        let userIds = [];
+        if (typeof rowRecords.data.users !== 'undefined') {
+            rowRecords.data.users.forEach(user => {
+                userIds.push(user.id)
+            })
+        }
+        rowRecords.data.userIds = userIds;
         Ext.create('task_schedule.view.main.TaskWindow.TaskWindow', {
             viewModel: {
                 data: {
@@ -16,16 +22,18 @@ Ext.define('task_schedule.view.Task.TaskGrid.TaskGridController', {
         }).show();
     },
 
-    clickDelete: function () {
+
+    clickDelete: function (grid, rowIndex, colIndex) {
         {
-            Ext.create('task_schedule.view.main.TaskWindow.TaskDeleteWindow', {
+            let TaskId = grid.getStore().getRange()[rowIndex].get('id')
+            Ext.create('task_schedule.view.main.TaskDeleteWindow.TaskDeleteWindow', {
                 viewModel: {
                     data: {
-                        action: "Create"
+                        taskId: TaskId
                     }
                 }
             }).show();
         }
-    }
+    },
 
 });

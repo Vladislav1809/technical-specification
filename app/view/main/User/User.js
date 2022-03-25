@@ -29,6 +29,17 @@ Ext.define('task_schedule.view.main.User.User', {
             xtype: 'usergrid',
             width: '100%'
         }
+    ],
+    buttons: [
+        {
+            style: 'nackground-color: #800080',
+            border: 0,
+            xtype: 'button',
+            text: 'Get PDF',
+            scale: 'large',
+            handler: 'getPdf',
+            margin: 5,
+        },
     ]
 });
 

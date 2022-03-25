@@ -2,7 +2,7 @@ Ext.define('task_schedule.store.WindowStore', {
 
     extend: 'Ext.data.Store',
 
-    fields:[ 'id', 'name', 'users','date','deadline'],
+    fields: ['id', 'name', 'users', 'date', 'deadline'],
 
     alias: 'store.WindowStore',
     proxy: {

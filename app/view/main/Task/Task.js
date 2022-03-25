@@ -16,10 +16,21 @@ Ext.define('task_schedule.view.main.Task.Task', {
             scale: 'large',
             handler: 'ClickCreate'
 
-    },
+        },
         {
             xtype: 'taskgrid'
         }
+    ],
+    buttons: [
+        {
+            style: 'background-color: #800080',
+            border: 0,
+            xtype: 'button',
+            text: 'Get PDF',
+            scale: 'large',
+            handler: 'getPdf',
+            margin: 5,
+        },
     ]
 
 });

@@ -57,6 +57,10 @@
     $ui-header-noborder-adjust: false
 );
 
+.x-btn-delete {
+    background-image: url(./../resources/image/delete.png);
+}
+
 .x-title-icon-navigation {
     font-family: FontAwesome;
     color: #fff;

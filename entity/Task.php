@@ -1,28 +1,24 @@
 <?php
+
 namespace entity;
 
 // entity/Task.php
-
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Tools\Console\Helper\EntityManagerHelper;
 use dto\AbstractDto;
 use dto\TaskDto;
 use dto\TaskWithClientsDto;
-use entity\Client;
 
 
-/** @ORM\Entity
+/**
+ * @ORM\Entity()
+ * @ORM\Table(name="task")
  */
 class Task
 {
-
-//    /**
-//     * Many Groups have Many Users.
-//     * @ManyToMany(targetEntity="entity\Client", mappedBy="tasks")
-//     *
-//     */
-//    private $users;
     /**
      * @ORM\ManyToMany(targetEntity="entity\Client", mappedBy="tasks")
      */
@@ -48,7 +44,8 @@ class Task
      */
     private $deadline;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->users = new ArrayCollection();
     }
 
@@ -71,11 +68,22 @@ class Task
         return $this;
     }
 
-    public function addClient(Client $client){
-        if (!$this->users->contains($client)){
+    public function addClient(Client $client)
+    {
+        if (!$this->users->contains($client)) {
             $this->users->add($client);
-}
+            return $this;
+        }
     }
+
+    public function removeClient(Client $client)
+    {
+        if ($this->users->contains($client)) {
+            $this->users->removeElement($client);
+            return $this;
+        }
+    }
+
     public function setDateOfCreate($dateOfCreate)
     {
         $this->dateOfCreate = $dateOfCreate;
@@ -112,16 +120,18 @@ class Task
 
     public function toDto(): AbstractDto
     {
+
         $taskDto = new TaskDto();
         $taskDto->id = $this->getId();
         $taskDto->name = $this->getName();
-        $taskDto->dateOfCreate = $this->getDateOfCreate()->format("d.m.Y");
         $taskDto->deadline = $this->getDeadline()->format("d.m.Y");
-
+        $taskDto->dateOfCreate = $this->getDateOfCreate()->format("d.m.Y");
+//
         return $taskDto;
     }
 
-    public function toDtoWithClients(){
+    public function toDtoWithClients()
+    {
         /** @var TaskWithClientsDto $taskWithClientsDto */
         $taskWithClientsDto = $this->toDto();
         /** @var Client $client */
@@ -130,8 +140,6 @@ class Task
         }
         return $taskWithClientsDto;
     }
-
-
 
 }
 

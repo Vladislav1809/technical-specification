@@ -3,7 +3,7 @@ Ext.define('task_schedule.view.main.TaskWindow.TaskWindow', {
 
     xtype: 'task_window',
     itemId: 'taskWindow',
-    // title: 'Create tasks',
+    title: 'Create tasks',
     bind:
         {
             title: "{action}" + " Task"
@@ -18,7 +18,7 @@ Ext.define('task_schedule.view.main.TaskWindow.TaskWindow', {
 
     requires: [
         "task_schedule.view.main.Task.TaskWindow.TaskWindowController",
-        "task_schedule.view.main.Task.TaskWindow.TaskWindowModel"
+        "task_schedule.view.main.Task.TaskWindow.TaskWindowModel",
     ],
     controller: 'taskWindow',
     viewModel: 'taskWindow',
@@ -31,15 +31,6 @@ Ext.define('task_schedule.view.main.TaskWindow.TaskWindow', {
             name: 'name',
             bind: {
                 value: '{TaskWindow.name}'
-            }
-        },
-        {
-            xtype: 'combobox',
-            fieldLabel: 'Assigned users',
-            name: 'users',
-            width: '400',
-            bind: {
-                value: '{TaskWindow.users}'
             }
         },
         {
@@ -64,6 +55,22 @@ Ext.define('task_schedule.view.main.TaskWindow.TaskWindow', {
                 value: '{TaskWindow.deadline}'
             }
         },
+        {
+            xtype: 'combobox',
+            itemId: 'taskCombobox',
+            fieldLabel: 'Assigned users',
+            multiSelect: true,
+            name: 'users',
+            width: '400',
+            store: Ext.create('task_schedule.store.UserStore'),
+            valueField: 'id',
+            displayField: 'name',
+            queryMode: 'local', // можно remote.
+
+            bind: {
+                value: '{TaskWindow.userIds}'
+            },
+        },
     ],
 
     buttons: [
@@ -76,7 +83,7 @@ Ext.define('task_schedule.view.main.TaskWindow.TaskWindow', {
                 text: "{action}"
             }
 
-},
+        },
         {
             style: 'background-color: #800080',
             text: 'Close',

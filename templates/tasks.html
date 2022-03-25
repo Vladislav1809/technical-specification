@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<style type="text/css">
+  table{
+    width: 100%;
+    border: 1px groove black;
+    border-collapse: collapse;
+  }
+  tr, th {
+    border: 1px groove black;
+    border-collapse: collapse;
+
+  }
+  div {
+    background-image: linear-gradient(225deg, #28d8ff, #032eff);
+    filter: drop-shadow(0 20px 30px #28d8ff33);
+    color: purple;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-box-decoration-break: clone;
+
+  }
+</style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+  <div>
+      <h1 align="center">Список задач</h1>
+  </div>
+  <table>
+    <thead>
+      <tr>
+          <th>{{ id }}</th>
+          <th>{{ name }}</th>
+          <th>{{ dateOfCreate }}</th>
+          <th>{{ deadline }}</th>
+          <th>{{ users }}</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for task in taskArray %}
+        <tr>
+          <th>{{ task.id }}</th>
+          <th>{{ task.name }}</th>
+          <th>{{ task.dateOfCreate }}</th>
+          <th>{{ task.deadline }}</th>
+          <th>
+            {% for user in task.users %}
+                {{ user }} <br>
+            {% endfor %}
+          </th>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>

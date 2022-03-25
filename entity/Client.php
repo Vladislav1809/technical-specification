@@ -1,14 +1,18 @@
 <?php
+
 namespace entity;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
 use dto\AbstractDto;
 use dto\ClientDto;
 use dto\ClientWithTasksDto;
-use entity\Task;
+use Doctrine\ORM\Mapping as ORM;
 
-/** @ORM\Entity */
+/**
+ * @ORM\Entity()
+ * @ORM\Table(name="client")
+ */
 class Client
 {
     /**
@@ -23,15 +27,8 @@ class Client
      */
     private $client;
 
-//    /**
-//     * Many Users have Many Groups.
-//     * @ManyToMany(targetEntity="entity\Task", inversedBy="client")
-//     * @JoinTable(name="client_tasks")
-//     */
-//    private $tasks;
-
     /**
-     * @ORM\ManyToMany(targetEntity="entity\Task", inversedBy="client")
+     * @ORM\ManyToMany(targetEntity="entity\Task", inversedBy="users")
      * @ORM\JoinTable(name="client_tasks",
      *                  joinColumns={@ORM\JoinColumn(name="client_id", referencedColumnName="id")},
      *                  inverseJoinColumns={@ORM\JoinColumn(name="task_id", referencedColumnName="id")}
@@ -58,8 +55,16 @@ class Client
         if (!$this->tasks->contains($task)) {
             $this->tasks->add($task);
         }
+        return $this;
     }
 
+    public function removeTask(Task $task)
+    {
+        if ($this->tasks->contains($task)) {
+            $this->tasks->removeElement($task);
+        }
+        return $this;
+    }
 
     public function setId($id)
     {

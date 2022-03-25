@@ -8,37 +8,29 @@ Ext.define('task_schedule.view.main.Task.TaskWindow.TaskWindowController', {
     },
 
 
-    ClickCreate: function (button){
+    ClickCreate: function (button) {
         let gridTaskStore = Ext.ComponentQuery.query('#taskGrid')[0].getStore()
         let params = {
-            id: null,
-            name: button.up('#taskWindow').down('#taskName').getValue(),
+            id: this.getViewModel().data.TaskWindow.id,
+            name: this.getViewModel().data.TaskWindow.name,
             dateOfCreate: button.up('#taskWindow').down('#dateOfCreate').getSubmitValue(),
-            deadline: button.up('#taskWindow').down('#deadline').getSubmitValue()
+            deadline: button.up('#taskWindow').down('#deadline').getSubmitValue(),
+            userIds: this.getViewModel().data.TaskWindow.userIds,
         }
         Ext.Ajax.request({
             url: 'http://localhost:63342/technical-specification/api.php?act=Task&method=save',
             method: 'POST',
             jsonData: JSON.stringify(params),
-            success: function() {
+            success: function () { //handler
                 Ext.Msg.alert('good job');
                 gridTaskStore.reload()
                 button.up("task_window").close()
             },
-            failure: function() {
-                Ext.Msg.alert('some errors');
-                button.up('task_window')
+            failure: function (response, options) {
+                Ext.Msg.alert(JSON.parse(response.responseText)['Error massage']);
+                button.up('task_window').close()
             },
         })
     },
-
-    clickDeleteClose: function (button){
-        button.up("task_delete_window").close()
-    },
-
-    clickDelete: function (button){
-        alert('you have successfully deleted task!')
-        button.up("task_delete_window").close()
-    }
 
 });

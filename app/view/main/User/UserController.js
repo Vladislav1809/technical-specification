@@ -3,18 +3,21 @@ Ext.define('task_schedule.view.main.User.UserContoller', {
 
     alias: 'controller.user',
 
-    ClickCreate: function ()
-    {
+    ClickCreate: function () {
         Ext.create('task_schedule.view.main.UserWindow.UserWindow', {
             viewModel: {
                 data: {
                     action: "Create",
                     UserWindow: {
-                        users: null,
-                        tasks: null
+                        id: null
                     }
                 }
             }
         }).show();
+    },
+    getPdf: function (){
+        window.open(
+            'http://localhost:63342/technical-specification/api.php?act=Client&method=getPdf','_blank'
+        )
     }
 });

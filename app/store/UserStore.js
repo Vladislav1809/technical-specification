@@ -2,7 +2,7 @@ Ext.define('task_schedule.store.UserStore', {
 
     extend: 'Ext.data.Store',
 
-    fields:[ 'id', 'name', 'tasks'],
+    fields: ['id', 'name', 'tasks'],
 
     alias: 'store.UserStore',
     proxy: {
@@ -27,5 +27,6 @@ Ext.define('task_schedule.store.UserStore', {
     //         rootProperty: 'items'
     //     }
     // },
+    autoLoad: true
 
 });

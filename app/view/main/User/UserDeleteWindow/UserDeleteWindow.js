@@ -1,12 +1,12 @@
-Ext.define('task_schedule.view.main.UserWindow.UserDeleteWindow', {
+Ext.define('task_schedule.view.main.User.UserDeleteWindow.UserDeleteWindow', {
     extend: 'Ext.window.Window',
 
     xtype: 'user_delete_window',
-
+    itemId: 'deleteWindow',
     name: 'deleteButton',
     title: 'Are you sure?',
 
-    layout: 'table',
+    layout: 'vbox',
 
     width: 300,
     height: 110,
@@ -14,22 +14,26 @@ Ext.define('task_schedule.view.main.UserWindow.UserDeleteWindow', {
 
     closable: false,
 
-
-    controller: 'userWindow',
+    requires: [
+        "task_schedule.view.main.User.UserDeleteWindow.UserDeleteController",
+        "task_schedule.view.main.User.UserDeleteWindow.UserDeleteWindowModel"
+    ],
+    controller: 'userDeleteWindow',
+    viewmodel: 'userDeleteWindow',
 
     buttons: [
         {
             style: 'background-color: #800080',
             scale: 'medium',
             text: 'Delete',
-            handler: 'clickDelete'
+            handler: 'ClickDeleteUser'
         },
 
         {
             style: 'background-color: #800080',
             text: 'Close',
             scale: 'medium',
-            handler: 'clickDeleteClose'
+            handler: 'clickClose'
         }
     ]
 })

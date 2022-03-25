@@ -8,6 +8,7 @@ Ext.define('task_schedule.view.main.Task.TaskGrid.TaskGrid', {
         type: "WindowStore"
     },
     requers: [
+        'task_schedule.view.main.Task.TaskGrid.TaskGridController',
         'task_schedule.view.main.Task.TaskWindow.TaskWindowController',
     ],
     controller: "taskGrid",
@@ -15,7 +16,8 @@ Ext.define('task_schedule.view.main.Task.TaskGrid.TaskGrid', {
     columns: [
         {
             text: 'id',
-            dataIndex: 'id'
+            dataIndex: 'id',
+            xtype: 'rownumberer',
         },
         {
             text: 'Name',
@@ -26,15 +28,14 @@ Ext.define('task_schedule.view.main.Task.TaskGrid.TaskGrid', {
             text: 'Users',
             dataIndex: 'users',
             flex: 1,
-            renderer: function (value)
-            {
+            renderer: function (value) {
                 let users = ''
-                if (typeof(value) !== 'undefined'){
-                    for (let i = 0; i < value.length; i++){
+                if (typeof (value) !== 'undefined') {
+                    for (let i = 0; i < value.length; i++) {
                         let element = value[i]
-                        if (i !== value.length - 1){
+                        if (i !== value.length - 1) {
                             users += element.name + ', '
-                        }else{
+                        } else {
                             users += element.name
                         }
                     }
@@ -53,26 +54,25 @@ Ext.define('task_schedule.view.main.Task.TaskGrid.TaskGrid', {
             flex: 1
         },
         {
-            text: '',
             align: 'center',
-            xtype: 'widgetcolumn',
-            widget: {
-                xtype: 'button',
-                text: "Delete",
-                defaultBindProperty: null, //important
-                handler: 'clickDelete',
-                // listeners: {
-                //     delete: 'delete'
-                // }
-            }
+            xtype: 'actioncolumn',
+            flex: 0.5,
+            items: [
+                {
+                    xtype: 'button',
+                    itemId: 'delBtn',
+                    iconCls: 'x-btn-delete',
+                    handler: 'clickDelete'
+                }
+            ]
         }
     ],
     // listeners: {
     //     select: 'onItemGridSelected'
     // }
-    listeners : {
+    listeners: {
         celldblclick: 'onItemGridSelected',
-        beforerender: function(item) {
+        beforerender: function (item) {
             item.getStore().load()
         }
     }

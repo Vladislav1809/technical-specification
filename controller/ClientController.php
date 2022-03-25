@@ -3,6 +3,7 @@
 namespace controller;
 
 use dto\ClientDto;
+use dto\ClientWithTasksDto;
 use entity\Client;
 use service\ClientService;
 
@@ -11,7 +12,7 @@ class ClientController
 {
     private $clientService;
 
-    public function __construct(ClientService $clientService){
+    public function __construct(ClientService $clientService) {
         $this->clientService = $clientService;
     }
 
@@ -24,24 +25,36 @@ class ClientController
 
     private function toIdNameDto($incomingData)
     {
-        $dto = new ClientDto();
+        $dto = new ClientWithTasksDto();
         $dto->id = $incomingData['id'];
         $dto->name = $incomingData['name'];
-
+        $dto->tasks = $incomingData['taskIds'];
         return $dto;
     }
 
 
     public function getClients()
     {
-        return ($this->clientService->get());
+        return $this->clientService->get();
     }
 
     public function getClientTasks()
     {
-        return ($this->clientService->get());
+        return $this->clientService->get();
 
     }
+
+    public function delete($incomingData)
+    {
+        if ($incomingData !== NULL) {
+            $this->clientService->delete($incomingData['id']);
+        }
+    }
+
+    public function getPdf(){
+        $this->clientService->getPdf();
+    }
+
 
 
 }
