@@ -1,6 +1,5 @@
 Ext.define('task_schedule.view.main.Task.TaskController', {
     extend: 'Ext.app.ViewController',
-
     alias: 'controller.task',
 
     ClickCreate: function () {
@@ -17,7 +16,7 @@ Ext.define('task_schedule.view.main.Task.TaskController', {
     },
     getPdf: function(){
         window.open(
-            'http://localhost:63342/technical-specification/api.php?act=Task&method=getPdf','_blank'
+            'http://localhost:63342/technical-specification/src/php-di/index.php?act=Task&method=getPdf','_blank'
         )
     }
 });

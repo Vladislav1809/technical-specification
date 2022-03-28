@@ -14,7 +14,7 @@ Ext.define('task_schedule.view.main.User.UserDeleteWindow.UserDeleteController',
         }
         debugger
         Ext.Ajax.request({
-            url: 'http://localhost:63342/technical-specification/api.php?act=Client&method=delete',
+            url: 'http://localhost:63342/technical-specification/src/php-di/index.php?act=Client&method=delete',
             method: 'POST',
             jsonData: JSON.stringify(params),
             success: function () {

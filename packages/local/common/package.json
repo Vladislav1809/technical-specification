@@ -115,7 +115,7 @@
         "sass" : {
             /**
              * The namespace to which this package's SASS corresponds. The default value of
-             * "common" means that the files in ./sass/src (and ./sass/var) match classes in
+             * "common" means that the files in ./sass/src(and ./sass/var) match classes in
              * the common" root namespace. In other words, "common.panel.Panel" maps to
              * ./sass/src/panel/Panel.scss.
              *

@@ -64,7 +64,7 @@ Ext.theme = Ext.apply(Ext.theme || {}, {
      * is used to specify the type of component to create as well as a potential key to
      * any `shortcuts` defined for the xtype.
      *
-     * @param manifest.config {Object} The component configuration object. The properties
+     * @param manifest.config{Object} The component configuration object. The properties
      * of this depend on the `xtype` of the component.
      *
      * @param [manifest.delegate] {String} The DOM query to use to select the element to
@@ -76,7 +76,7 @@ Ext.theme = Ext.apply(Ext.theme || {}, {
      * @param [manifest.setup] {Function} An optional function to be called to initialize
      * the component.
      * @param manifest.setup.component {Ext.Component} The component instance
-     * @param manifest.setup.container {Element} The component's container.
+     * @param manifest.setup.container.php{Element} The component's container.
      *
      * @param [manifest.folder] {String} The folder in to which to produce image slices.
      * Only applies to Ext JS 4.1 (removed in 4.2).
@@ -109,9 +109,9 @@ Ext.theme = Ext.apply(Ext.theme || {}, {
      * looks the same as a `manifest` entry. These are combined by copying the properties
      * from the shortcut over those of the manifest entry. In basic terms:
      *
-     *      var config = Ext.apply(Ext.apply({}, manfiest.config), shortcut.config);
+     *      var config= Ext.apply(Ext.apply({}, manfiest.config), shortcut.config);
      *      var entry = Ext.apply(Ext.apply({}, manfiest), shortcut);
-     *      entry.config = config;
+     *      entry.config= config;
      *
      * This is not exactly the process, but the idea is the same. The difference is that
      * the `ui` of the manifest entry is used to replace any `"{ui}"` substrings found in

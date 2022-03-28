@@ -17,7 +17,7 @@ Ext.define('task_schedule.view.main.User.UserContoller', {
     },
     getPdf: function (){
         window.open(
-            'http://localhost:63342/technical-specification/api.php?act=Client&method=getPdf','_blank'
+            'http://localhost:63342/technical-specification/src/php-di/index.php?act=Client&method=getPdf','_blank'
         )
     }
 });

@@ -8,7 +8,7 @@ Ext.define('task_schedule.store.WindowStore', {
     proxy: {
         method: 'GET',
         type: 'ajax',
-        url: 'http://localhost:63342/technical-specification/api.php?act=Task&method=getTasks',
+        url: 'http://localhost:63342/technical-specification/src/php-di/index.php?act=Task&method=getTasks',
         reader: {
             type: 'json',
         }

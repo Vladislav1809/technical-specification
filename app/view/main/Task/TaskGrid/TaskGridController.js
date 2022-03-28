@@ -1,10 +1,12 @@
 Ext.define('task_schedule.view.main.Task.TaskGrid.TaskGridController', {
-    extend: 'Ext.app.ViewController',
+    extend: 'task_schedule.view.main.MainController',
     alias: 'controller.taskGrid',
 
     onItemGridSelected: function (item) {
+        let me = this;
+        const createNewRequest = this.getView();
         let rowRecords = item.getSelectionModel().getSelection()[0];
-
+        this.maskEl(createNewRequest);
         let userIds = [];
         if (typeof rowRecords.data.users !== 'undefined') {
             rowRecords.data.users.forEach(user => {
@@ -20,6 +22,7 @@ Ext.define('task_schedule.view.main.Task.TaskGrid.TaskGridController', {
                 }
             }
         }).show();
+        me.unmaskEl(createNewRequest);
     },
 
 

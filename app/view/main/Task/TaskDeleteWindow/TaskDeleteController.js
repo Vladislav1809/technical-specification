@@ -13,7 +13,7 @@ Ext.define('task_schedule.view.main.Task.TaskDeleteWindow.TaskDeleteController',
             id: this.getViewModel().get('taskId')
         }
         Ext.Ajax.request({
-            url: 'http://localhost:63342/technical-specification/api.php?act=Task&method=delete',
+            url: 'http://localhost:63342/technical-specification/src/php-di/index.php?act=Task&method=delete',
             method: 'POST',
             jsonData: JSON.stringify(params),
             success: function () {
