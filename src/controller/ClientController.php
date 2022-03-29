@@ -5,13 +5,14 @@ namespace src\controller;
 use src\dto\ClientDto;
 use src\dto\ClientWithTasksDto;
 use src\entity\Client;
+use src\entity\Task;
 use src\service\ClientService;
+use src\service\TaskService;
 
 require_once(__DIR__ . '/../config.php');
 class ClientController
 {
     private $clientService;
-
     public function __construct(ClientService $clientService) {
         $this->clientService = $clientService;
     }
@@ -54,7 +55,4 @@ class ClientController
     public function getPdf(){
         $this->clientService->getPdf();
     }
-
-
-
 }

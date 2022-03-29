@@ -1,7 +1,6 @@
 <?php
 require_once __DIR__ . '/../config.php';
 return [
-//    'ClientController' => new \src\controller\ClientController() // bad practice for php-di
     'ClientController' => DI\factory(function (\Psr\Container\ContainerInterface $clientService) {
         return new \src\controller\ClientController($clientService->get('ClientService'));
     }),
