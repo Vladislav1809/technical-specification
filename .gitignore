@@ -1,3 +1,6 @@
 var/
 vendor/
 .idea/
+.sencha/
+build/
+ext/
