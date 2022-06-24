@@ -1,6 +1,6 @@
 Ext.define('task_schedule.view.main.Task.TaskWindow.TaskWindowController', {
     extend: 'task_schedule.view.main.MainController',
-
+// skyeng team в каких случаях стоит употреблять orm...
     alias: 'controller.taskWindow',
 
     ClickClose: function (button) {

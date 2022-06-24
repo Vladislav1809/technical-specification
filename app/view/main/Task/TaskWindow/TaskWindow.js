@@ -65,8 +65,7 @@ Ext.define('task_schedule.view.main.TaskWindow.TaskWindow', {
             store: Ext.create('task_schedule.store.UserStore'),
             valueField: 'id',
             displayField: 'name',
-            queryMode: 'local', // можно remote.
-
+            queryMode: 'local',
             bind: {
                 value: '{TaskWindow.userIds}'
             },
@@ -76,7 +75,6 @@ Ext.define('task_schedule.view.main.TaskWindow.TaskWindow', {
     buttons: [
         {
             style: 'background-color: #800080',
-            // text: 'Create',
             scale: 'large',
             handler: 'ClickCreate',
             bind: {
@@ -91,6 +89,4 @@ Ext.define('task_schedule.view.main.TaskWindow.TaskWindow', {
             handler: 'ClickClose'
         }
     ],
-
-
 })
